@@ -32,5 +32,4 @@
         name="Gráfico de Ausencias"
         parent="hr_holidays.menu_hr_holidays_root"
         action="action_hr_leave_graph_reason"/>
-
 </odoo>
