@@ -1,0 +1,36 @@
+<odoo>
+    <record id="hr_leave_view_form_reason" model="ir.ui.view">
+        <field name="name">hr.leave.form.reason</field>
+        <field name="model">hr.leave</field>
+        <field name="inherit_id" ref="hr_holidays.hr_leave_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='holiday_status_id']" position="after">
+                <field name="reason_id" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_hr_leave_graph_reason" model="ir.ui.view">
+        <field name="name">hr.leave.graph.reason</field>
+        <field name="model">hr.leave</field>
+        <field name="arch" type="xml">
+            <graph string="Ausencias por Motivo" type="bar">
+                <field name="reason_id" type="row" />
+            </graph>
+        </field>
+    </record>
+
+    <record id="action_hr_leave_graph_reason" model="ir.actions.act_window">
+        <field name="name">Ausencias por Motivo</field>
+        <field name="res_model">hr.leave</field>
+        <field name="view_mode">graph</field>
+        <field name="view_id" ref="view_hr_leave_graph_reason"/>
+        <field name="context">{'search_default_employee_id': 1}</field>
+    </record>
+
+    <menuitem id="menu_hr_leave_graph_reason"
+        name="Gráfico de Ausencias"
+        parent="hr_holidays.menu_hr_holidays_root"
+        action="action_hr_leave_graph_reason"/>
+
+</odoo>
